@@ -101,3 +101,23 @@ export const ideas = sqliteTable("ideas", {
     sql`(unixepoch())`,
   ),
 });
+
+export const creatorProfile = sqliteTable("creator_profile", {
+  id: text("id").primaryKey(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => user.id),
+  brandName: text("brand_name"),
+  niche: text("niche"),
+  targetAudience: text("target_audience"),
+  tone: text("tone"), // JSON array: ["casual", "educativo"]
+  goals: text("goals"), // JSON array
+  activeSocials: text("active_socials"), // JSON array con prioridad
+  references: text("references"),
+  createdAt: integer("created_at", { mode: "timestamp" }).default(
+    sql`(unixepoch())`,
+  ),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).default(
+    sql`(unixepoch())`,
+  ),
+});
