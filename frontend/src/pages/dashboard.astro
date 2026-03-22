@@ -1,0 +1,16 @@
+---
+import LogoutButton from "../components/LogoutButton";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="NetNizer - Dashboard">
+  <main class="min-h-screen bg-gray-950 text-white p-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-center justify-between mb-8">
+        <h1 class="text-3xl font-bold">Dashboard 🚀</h1>
+        <LogoutButton client:load />
+      </div>
+      <p class="text-gray-400">Bienvenido a NetNizer!</p>
+    </div>
+  </main>
+</Layout>

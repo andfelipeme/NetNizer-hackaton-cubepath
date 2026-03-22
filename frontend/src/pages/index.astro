@@ -1,0 +1,16 @@
+---
+import LoginButton from "../components/LoginButton";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="NetNizer">
+  <main
+    class="min-h-screen flex flex-col items-center justify-center bg-gray-950 text-white"
+  >
+    <h1 class="text-5xl font-bold mb-4">NetNizer 🚀</h1>
+    <p class="text-gray-400 text-xl mb-8">
+      Tu sistema operativo para redes sociales
+    </p>
+    <LoginButton client:load />
+  </main>
+</Layout>
