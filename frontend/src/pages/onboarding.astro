@@ -1,0 +1,33 @@
+---
+export const prerender = false;
+
+import Layout from "../layouts/Layout.astro";
+import OnboardingWizard from "../components/OnboardingWizard";
+
+const cookieHeader = Astro.request.headers.get("cookie") || "";
+
+const response = await fetch("http://localhost:3000/api/auth/get-session", {
+  headers: { cookie: cookieHeader },
+});
+
+const session = await response.json();
+
+if (!session?.user) {
+  return Astro.redirect("/");
+}
+
+// Si ya tiene perfil, mandarlo al dashboard
+const profileResponse = await fetch("http://localhost:3000/api/profile", {
+  headers: { cookie: cookieHeader },
+});
+
+const { profile } = await profileResponse.json();
+
+if (profile) {
+  return Astro.redirect("/dashboard");
+}
+---
+
+<Layout title="NetNizer - Onboarding">
+  <OnboardingWizard client:load user={session.user} />
+</Layout>
