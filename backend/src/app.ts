@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { auth } from "./auth";
 import profile from "./routes/profile";
+import ai from "./routes/ai";
 
 const app = new Hono();
 
@@ -20,6 +21,7 @@ app.on(["GET", "POST"], "/api/auth/**", (c) => {
 });
 
 app.route("/api/profile", profile);
+app.route("/api/ai", ai);
 
 app.get("/", (c) => {
   return c.json({ message: "🚀 NetNizer API running!" });

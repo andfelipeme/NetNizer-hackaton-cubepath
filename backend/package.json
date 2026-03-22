@@ -12,6 +12,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@libsql/client": "^0.17.2",
     "better-auth": "^1.5.5",
     "dotenv": "^17.3.1",
